@@ -9,5 +9,6 @@ This is a simple Function Compute (FC) written in Python which fetches the data 
 * The *config.py* file is not provided, as you may already have your own configuration file/system (perhaps even using the enviroment variables of the FC). Just replace the config.config dictionary members with your own cofiguration parameters.
 * A sample *Dockerfile* in provided, which you might adjust to your use case.
 * A sample *requirements.txt* file is provided, which you might adjust to your use case.
+* The free API has certain quota, so setup the "cronjob" to be run every hour.
 * I am **not** affiliated in any way to Exchange-Rate-API. I found their API handy for some of my projects. You should check if their service suits your use case, both technically and legally.
 * Please **read** the LICENSE file.
