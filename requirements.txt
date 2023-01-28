@@ -1,0 +1,5 @@
+pyyaml
+urllib3
+oss2
+simplejson
+eventlet
