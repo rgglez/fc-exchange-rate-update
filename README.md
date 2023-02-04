@@ -14,6 +14,6 @@ This is a simple Aliyun Function Compute (FC) written in Python which fetches th
 
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-
 Copyright 2023 Rodolfo González González.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
