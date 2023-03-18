@@ -12,7 +12,6 @@ This is a simple Aliyun Function Compute (FC) written in Python which fetches th
 * The free API has certain quota, so setup the "cronjob" to be run every hour.
 * Aliyun refers to Alibaba Cloud Services, but this code can be easily adapted to run in AWS Lambda, for instance.
 * I am **not** affiliated in any way to Exchange-Rate-API. I found their API handy for some of my projects. You should check if their service suits your use case, both technically and legally. Also, I'm not responsible for the quality or fitness of their service. Use it at your own risk ;)
-* Please **read** the LICENSE file.
 
 ## License
 
