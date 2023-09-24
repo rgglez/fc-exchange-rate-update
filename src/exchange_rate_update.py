@@ -28,15 +28,19 @@
 
 import os
 
+from rich.pretty import pprint
+
+###############################################################################
+
 class ExchangeRateUpdate:
-    ###############################################################################
+    # Constants
 
     ERROR_OK = 0
     ERROR_CANT_UPLOAD_FILE = 1
     ERROR_CANT_WRITE_FILE = 2
     ERROR_CANT_GET_DATA = 3
 
-    ###############################################################################
+    # Class variables
 
     config = None
     http = None
@@ -45,7 +49,7 @@ class ExchangeRateUpdate:
 
     ###############################################################################
 
-    def __init__(self, config, http, oss, file) -> None:
+    def __init__(self, config=None, http=None, oss=None, file=None) -> None:
         ExchangeRateUpdate.config = config
         ExchangeRateUpdate.http = http
         ExchangeRateUpdate.oss = oss
@@ -54,45 +58,49 @@ class ExchangeRateUpdate:
 
     ###############################################################################
 
-    ## Get the data from Exchange Rate
     def getRates(self):
+        """Get the data from Exchange Rate.
+        """
         try:
-            result = ExchangeRateUpdate.http.request("GET", 
-                        ExchangeRateUpdate.config.config['EXCHANGE_RATE']['API'])
+            result = self.http.request("GET",
+                self.config.config['EXCHANGE_RATE']['API'])
+            pprint(result)
 
             return result.data.decode("utf-8")
 
         except Exception as ex:
-            print(ex)
+            pprint(ex)
             return False
     # getRates
 
     ###############################################################################
 
-    # Write data from Exchange Rate into a local file
-    def writeTemp(self, json):
+    def writeTemp(self, file, json):
+        """Writes data from Exchange Rate into a local file.
+        """
         try:
-            file = open(ExchangeRateUpdate.file, mode="w", encoding="utf-8")
+            file = open(file, mode="w", encoding="utf-8")
             file.write(json)
             file.close()
 
             return True
 
         except Exception as ex:
-            print(ex)
+            pprint(ex)
             return False
     # writeTemp
 
     ###############################################################################
 
-    # Upload the local file to the OSS bucket.
-    def uploadRates(self):
+    def uploadRates(self, file):
+        """Uploads the Exchange Rate data file into OSS.
+        """
         try:
-            object = os.path.basename(ExchangeRateUpdate.file)
-            ExchangeRateUpdate.oss.put_object_from_file(object, ExchangeRateUpdate.file)
+            object = os.path.basename(file)
+            self.oss.put_object_from_file(object, file)
 
         except Exception as ex:
-            print(ex)
+            pprint(ex)
             return False
 
         return True
@@ -101,6 +109,8 @@ class ExchangeRateUpdate:
     ###############################################################################
 
     def update(self):
+        """Updates the Exchange Rate data.
+        """
         jsonData = self.getRates()
         if jsonData != False:
             res = self.writeTemp('/tmp/' + ExchangeRateUpdate.file, jsonData)
@@ -116,3 +126,11 @@ class ExchangeRateUpdate:
             return ExchangeRateUpdate.ERROR_CANT_GET_DATA
     # update
 # ExchangeRateUpdate
+
+###############################################################################
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()
+# main
