@@ -59,7 +59,7 @@ class ExchangeRateUpdate:
     ###############################################################################
 
     def getRates(self):
-        """Get the data from Exchange Rate.
+        """Gets the data from Exchange Rate.
         """
         try:
             result = self.http.request("GET",
