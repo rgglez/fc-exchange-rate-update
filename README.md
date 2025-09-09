@@ -4,6 +4,8 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/rgglez/fc-exchange-rate-update/total) 
 ![GitHub issues](https://img.shields.io/github/issues/rgglez/fc-exchange-rate-update) 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rgglez/fc-exchange-rate-update)
+![GitHub stars](https://img.shields.io/github/stars/rgglez/fc-exchange-rate-update?style=social)
+![GitHub forks](https://img.shields.io/github/forks/rgglez/fc-exchange-rate-update?style=social)
 
 This is a simple Aliyun Function Compute (FC) written in Python which fetches the data in JSON format from the [Exchange Rate API](https://www.exchangerate-api.com/) (go there to get a free key) and uploads it to an Aliyun OSS bucket. It is intended to be used in a [custom container](https://www.alibabacloud.com/help/en/function-compute/latest/create-a-function)-sourced function [triggered by a timer](https://www.alibabacloud.com/help/en/function-compute/latest/configure-a-time-trigger), but you can adapt it depeding on your needs.
 
